@@ -1,0 +1,10 @@
+sqlalchemy
+fastapi
+uvicorn
+pytest
+httpx
+pytest-asyncio
+sqlalchemy[asyncio]
+pgvector
+alembic             
+aio-pika 
