@@ -17,3 +17,8 @@ async def update_document(datasource: str, document_id: str):
 @router.delete("/datasource/{datasource}/documents/{document_id}", summary="Delete a Document")
 async def delete_document(datasource: str, document_id: str):       
     return {"message": f"Document {document_id} in datasource {datasource} deleted successfully!"}  
+
+
+@router.post("similarity", summary="Get Similar Documents")
+async def get_similar_documents():
+    return {"message": "Similar documents endpoint is working!"}
