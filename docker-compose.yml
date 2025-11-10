@@ -1,31 +1,17 @@
+version: '3.8'
 services:
-  rabbitmq:
-    image: rabbitmq:3-management
-    container_name: rabbitmq
-    restart: always
-    ports:
-      - "5671:5672"
-      - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-    
   postgres:
-    image: postgres:latest
-    container_name: postgres_db
-    restart: always
+    image: pgvector/pgvector:pg17-trixie
+
     environment:
-      POSTGRE_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: datahub
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=vector_db
     ports:
       - "5431:5432"
-  
-volumes: 
-  rabbitmq_data:
-  postgres_data:
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
+
+volumes:
+  pgdata:
